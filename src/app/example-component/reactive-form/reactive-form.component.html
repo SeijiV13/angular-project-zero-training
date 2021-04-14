@@ -1,0 +1,7 @@
+<h3>Form Example</h3>
+<form [formGroup]="userForm" (ngSubmit)="submitForm()">
+  <input formControlName="name"/>
+  <input formControlName="age"/>
+  <input formControlName="active"/>
+  <button type="submit">Submit </button>
+</form>
