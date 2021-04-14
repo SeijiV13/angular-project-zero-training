@@ -1,0 +1,16 @@
+<div class="child2">
+    <h3>Child 2 Component</h3>
+    <ul *ngFor="let user of users">
+       <li>
+         {{user.name}}
+         {{user.age}}
+         {{user.active}}
+       </li>
+      </ul>
+  </div>
+
+  <button (click)="addUser()">Add User</button>
+<h3>From Component 1</h3>
+{{selectedUser?.name}}
+{{selectedUser?.age}}
+{{selectedUser?.active}}
