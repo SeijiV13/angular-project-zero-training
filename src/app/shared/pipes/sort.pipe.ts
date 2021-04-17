@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { User } from '../models/User';
 
 @Pipe({
-  name: 'sort'
+  name: 'sortPure'
 })
 export class SortPipe implements PipeTransform {
 

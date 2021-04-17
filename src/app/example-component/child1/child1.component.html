@@ -3,7 +3,7 @@
   <!-- Two-way Data binding a.k.a "Banana in a Box" syntax: [(ngModel)]="property" -->
   <input type="text" [(ngModel)]="field" />
   <!-- Pipe Usage in the template. Syntax: {{ property | pipeName: arg2:arg3... }} -->
-  <ul *ngFor="let user of users | sortImpure: field">
+  <ul *ngFor="let user of users | sortImpure: field"> <!-- To use pure sort pipe change the pipe name to sortPure -->
     <li (click)="selectUser(user)">
       {{user.name}}
       {{user.age}}
