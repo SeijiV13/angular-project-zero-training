@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="col-1">
+    <h3>Template Driven Form Approach</h3>
+    <form class="form" #userForm="ngForm" (ngSubmit)="onTDFormSubmit()">
+      <!-- Name Control -->
+      <label for="nameId">Name:</label>
+      <input class="form-control" type="text" id="nameId"
+        name="name"
+        [ngModel]="'Glenn'"
+        #nameTRF="ngModel"
+        required>
+      <div class="form-validation-message" *ngIf="!nameTRF.valid && nameTRF.touched">Name is Required!</div>
+      <!-- Age Control -->
+      <label for="ageId">Age:</label>
+      <input class="form-control" type="number" id="ageId"
+        name="age"
+        [ngModel]="20"
+        #ageTRF="ngModel"
+        required
+        maxlength="3"/>
+      <div class="form-validation-message" *ngIf="!ageTRF.valid && ageTRF.touched">Age is Required!</div>
+      <!-- Active Control -->
+      <label for="activeId">Is Active:</label>
+      <input class="form-control" type="checkbox" name="active" id="activeId"
+      [ngModel]="true"
+      #ageTRF="ngModel"
+      />
+      <button style="margin-bottom: 5px;" [disabled]="!userForm.valid" type="submit">Submit</button>
+      <button (click)="onResetForm()" type="button">Refresh</button>
+    </form>
+  </div>
+  <div class="col-2">
+    <div class="form-data" *ngIf="submitted">
+      <h3>Form Data:</h3>
+      <div>Date w/o Pipe: {{ newDate }}</div>
+      <!-- We can also chain pipes like the code below -->
+      <!-- Syntax: {{ output | pipe1: 'someParams' | pipe2 | pipe3 ... }} -->
+      <!-- Side Note: The transformarion of output parsed from LEFT to RIGHT -->
+      <!--          : If you try to change the order of the pipes then it will result to error -->
+      <!--          : Because the output is date object and you're trying to parsed it to UpperCase which is cannot be parsed -->
+      <!--          : So, THE PIPE ORDER MATTERS! -->
+      <div>Date: {{ newDate | date: 'long' | uppercase }}</div>
+      <div>Name: {{ formData?.name }}</div>
+      <div>Age: {{ formData?.age }}</div>
+      <div>IsActive: {{ formData?.active }}</div>
+      <hr />
+      <h4>JSON Stringified version:</h4>
+      <div>{{ formData | json }}</div>
+    </div>
+  </div>
+</div>
+
+<!-- NOTES FOR TEMPLATE DRIVEN FORMS -->
+<!--
+  How to create a Template-Driven Form
+    1. Declare a Template Reference Variable (syntax: #variableName)
+       inside form tag and assign the 'ngForm' directive as value to it
+    2. Register each control by adding 'ngModel' directive and each control
+       must have a name="controlName" attribute as this would be the name of the control
+
+  How to Set/Patch value to form or per control
+    Option 1: by Property Binding
+      - Syntax: <element ... [ngModel]="'Glenn'" /> or <element ... [ngModel]="29" />
+      - Note:
+          When assigning a string value to a bindable property enclose the string value in ''
+          for type number/boolean or a property no need to enclose it in ''
+
+    Option 2: by Component class method
+      - See setInitialFormValue() inside component
+
+-->

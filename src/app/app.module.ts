@@ -7,12 +7,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { TemplateDrivenFormComponent } from './example-component/template-driven-form/template-driven-form.component';
+import { SortPipe } from './shared/pipes/sort.pipe';
+import { SortImpurePipe } from './shared/pipes/sort-impure.pipe';
 @NgModule({
   declarations: [
     AppComponent,
     Child1Component,
     Child2Component,
     ReactiveFormComponent,
+    TemplateDrivenFormComponent,
+    SortPipe,
+    SortImpurePipe
   ],
   imports: [
     BrowserModule,

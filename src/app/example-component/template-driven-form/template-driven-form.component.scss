@@ -4,7 +4,6 @@
   align-items: center;
 
   width: 100%;
-  background-color: #f0f0f0;
 
   .col-1, .col-2 {
     padding: 10px;
@@ -19,29 +18,14 @@
       background-color: #f7f7f7;
       padding: 10px;
 
-      &-validation-message {
-        color: red;
-        font-size: 12px;
-        font-weight: 300;
-      }
-
       &-control {
         margin: 5px 0;
       }
 
-      &-group-ctrl, &-array-dependents {
-        display: flex;
-        flex-direction: column;
-      }
-
-      &-array-dependents-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        &-cta {
-          margin-left: 10px;
-        }
+      &-validation-message {
+        color: red;
+        font-size: 12px;
+        font-weight: 300;
       }
 
       // styles for invalid form controls
@@ -53,7 +37,6 @@
 
   .col-2 {
     flex: 1;
-    align-self: flex-start;
     .form-data {
       display: flex;
       flex-direction: column;

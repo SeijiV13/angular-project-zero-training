@@ -1,7 +1,53 @@
-<h3>Form Example</h3>
-<form [formGroup]="userForm" (ngSubmit)="submitForm()">
-  <input formControlName="name"/>
-  <input formControlName="age"/>
-  <input formControlName="active"/>
-  <button type="submit">Submit </button>
-</form>
+<div class="container">
+  <div class="col-1">
+    <h3>Reactive Form Approach</h3>
+    <form [formGroup]="userForm" class="form" (ngSubmit)="submitForm()">
+      <div class="form-group-ctrl" formGroupName="fullName">
+        <label for="firstName">First Name:</label>
+        <input id="firstName" class="form-control" formControlName="firstName" />
+        <label for="lastName">Last Name:</label>
+        <input id="lastName" formControlName="lastName" />
+      </div>
+      <div class="form-validation-message" *ngIf="!isfullNameCtrlValid">First Name and Last Name is Required!</div>
+      <label for="age">Age:</label>
+      <input id="age" type="number" class="form-control" formControlName="age" />
+      <div class="form-validation-message" *ngIf="!isAgeCtrlValid">Age is Required!</div>
+      <label for="active">Is Active:</label>
+      <input id="active" class="form-control" type="checkbox" formControlName="active" />
+
+      <div class="form-array-dependents-header">
+        <div>Dependents:</div>
+        <div class="form-array-dependents-header-cta">
+          <button style="margin-right: 10px;" type="button" (click)="addItem()">Add</button>
+          <button type="button" (click)="removeItem()">Remove</button>
+        </div>
+      </div>
+      <div formArrayName="dependents" *ngFor="let item of userForm.get('dependents')['controls']; let i = index;">
+        <div class="form-array-dependents" [formGroupName]="i">
+          <label for="fullName">Full Name:</label>
+          <input id="fullName" type="text" placeholder="Full Name" formControlName="fullName">
+          <label for="dependentAge">Age:</label>
+          <input id="dependentAge" type="number" placeholder="Age" formControlName="age">
+          <label for="dependentActive">Is Active:</label>
+          <input id="dependentActive" type="checkbox" formControlName="active">
+        </div>
+        <hr />
+      </div>
+      <button style="margin-bottom: 5px;" [disabled]="!userForm.valid" type="submit">Submit</button>
+      <button (click)="onResetForm()" type="button">Refresh</button>
+    </form>
+  </div>
+  <div class="col-2">
+    <div class="form-data" *ngIf="submitted">
+      <h3>Form Data:</h3>
+      <div>First Name: {{ formData?.fullName?.firstName }}</div>
+      <div>Last Name: {{ formData?.fullName?.lastName }}</div>
+      <div>Age: {{ formData?.age }}</div>
+      <div>IsActive: {{ formData?.active }}</div>
+      <div>Dependents: {{ formData?.dependents[0] }}</div>
+      <hr />
+      <h4>JSON Stringified version:</h4>
+      <div>{{ formData | json }}</div>
+    </div>
+  </div>
+</div>
