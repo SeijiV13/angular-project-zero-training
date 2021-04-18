@@ -10,6 +10,8 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 export class Child1Component implements OnInit {
   @Input('arrayOfUsers') users: Array<User> = [];
   @Output() selectedUserEmitter = new EventEmitter<User>();
+  field = '';  // Need to declare a variable here to hold the value from 2-way Data Binding
+
   constructor() { }
 
   ngOnInit() {

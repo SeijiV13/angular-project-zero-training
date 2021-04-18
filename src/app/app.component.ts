@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  arrayOfUsers : Array<User> = [
+  arrayOfUsers: Array<User> = [
     {
       name: "John Doe",
       age: 25,
@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
   ];
   usersForChild1: Array<User> = [];
   usersForChild2: Array<User> = [];
+  userData: User[];
   constructor() {
     Object.assign(this.usersForChild1, this.arrayOfUsers);
     Object.assign(this.usersForChild2, this.arrayOfUsers);
@@ -43,10 +44,11 @@ export class AppComponent implements OnInit {
       name: "Glenn Olazo",
       age: 20,
       active: false
-  })
-}
-receiveSelectedUser(user:User) {
-  this.selectedUserinApp = user;
-}
+    });
+  }
+
+  receiveSelectedUser(user: User) {
+    this.selectedUserinApp = user;
+  }
 
 }
