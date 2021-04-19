@@ -1,36 +1,18 @@
-<app-child1
-[arrayOfUsers]="usersForChild1"
-(selectedUserEmitter)="receiveSelectedUser($event)"></app-child1>
-<app-child2 [users]="usersForChild2"  [selectedUser]="selectedUserinApp"></app-child2>
+<!-- Redirection using RouterLink -->
+<h4>Redirection using RouterLink</h4>
+<button [routerLink]="['user', '2']" routerLinkActive="router-link-active" >User</button>
 
-<!-- Binding in variable -->
-<!-- <p>{{name}}</p>
-<p>{{age}}</p>
-<p>{{active}}</p> -->
-<!-- Binding in JSON -->
-<!-- <p>{{user.name}}</p>
-<p>{{user.age}}</p>
-<p>{{user.active}}</p> -->
-<!-- ngFor usage -->
-<h3>App Component</h3>
-<div>
-  <ul>
-    <ng-container *ngFor="let employee of arrayOfUsers; let i = index">
-        <li>
-               {{i + 1}}
-               {{employee.name}}
-               {{employee.age}}
-               {{employee.active}}
-         </li>
-    </ng-container>
+<button [routerLink]="['product']" routerLinkActive="router-link-active" >Product</button>
+<br><br>
+<h4>Redirection using navigate</h4>
+<!-- Redirection using router.navigate -->
+<button (click)="redirect('user')" >User</button>
 
-  </ul>
-  <button (click)="addUser()">Add User</button>
-</div>
-<hr />
-<!-- Reative Form -->
-<app-reactive-form></app-reactive-form>
-<hr />
+<button (click)="redirect('product')">Product</button>
+<button (click)="redirect('blog')">Blog</button>
 
-<!-- Template Driven Form -->
-<app-template-driven-form></app-template-driven-form>
+<router-outlet></router-outlet>
+
+<hr>
+
+
