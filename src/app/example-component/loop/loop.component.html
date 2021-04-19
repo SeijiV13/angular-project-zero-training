@@ -1,0 +1,30 @@
+<!-- CHILD 1 COMPONENT -->
+<app-child1
+[arrayOfUsers]="usersForChild1"
+(selectedUserEmitter)="receiveSelectedUser($event)"></app-child1>
+
+<!-- CHILD 2 COMPONENT -->
+<app-child2 [users]="usersForChild2"  [selectedUser]="selectedUserinApp"></app-child2>
+
+<h3>App Component</h3>
+<div>
+  <ul>
+    <ng-container *ngFor="let employee of arrayOfUsers; let i = index">
+        <li>
+               {{i + 1}}
+               {{employee.name}}
+               {{employee.age}}
+               {{employee.active}}
+         </li>
+    </ng-container>
+
+  </ul>
+  <button (click)="addUser()">Add User</button>
+</div>
+<hr />
+<!-- Reative Form -->
+<app-reactive-form></app-reactive-form>
+<hr />
+
+<!-- Template Driven Form -->
+<app-template-driven-form></app-template-driven-form>
