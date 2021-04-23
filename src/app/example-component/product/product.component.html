@@ -1,4 +1,7 @@
 <h3>This is the Product Page</h3>
 
+<div *ngFor="let data of products">
+  {{data.name}} - {{data.price}}
+</div>
 
 <button [routerLink]="['/user']" routerLinkActive="router-link-active" >To User</button>
