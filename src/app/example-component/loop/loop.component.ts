@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/shared/models/User';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-loop',
@@ -28,11 +30,19 @@ export class LoopComponent implements OnInit {
   usersForChild1: Array<User> = [];
   usersForChild2: Array<User> = [];
   userData: User[];
-  constructor() { }
+  form: FormGroup;
+  constructor(private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     Object.assign(this.usersForChild1, this.arrayOfUsers);
     Object.assign(this.usersForChild2, this.arrayOfUsers);
+    this.initForm();
+  }
+
+  initForm() {
+    this.form = this.fb.group({
+      name: [''],
+    });
   }
 
   addUser() {
@@ -45,6 +55,9 @@ export class LoopComponent implements OnInit {
 
   receiveSelectedUser(user: User) {
     this.selectedUserinApp = user;
+  }
+  redirect(url: string) {
+    this.router.navigate([url]);
   }
 
 }
