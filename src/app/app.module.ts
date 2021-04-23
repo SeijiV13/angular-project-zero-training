@@ -14,6 +14,7 @@ import { TemplateDrivenFormComponent } from './example-component/template-driven
 import { SortPipe } from './shared/pipes/sort.pipe';
 import { SortImpurePipe } from './shared/pipes/sort-impure.pipe';
 import { ProductComponent } from './example-component/product/product.component';
+import { ProductResolver } from './core/resolvers/product.resolver';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,7 @@ import { ProductComponent } from './example-component/product/product.component'
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ProductResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

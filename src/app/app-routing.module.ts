@@ -25,7 +25,7 @@ const routes: Routes = [
     component: ProductComponent,
     canActivate: [AuthGuard],
     resolve: {
-      products: [ProductResolver]
+      products: ProductResolver
     }
   },
   {
