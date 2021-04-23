@@ -28,3 +28,8 @@
 
 <!-- Template Driven Form -->
 <app-template-driven-form></app-template-driven-form>
+<form [formGroup]="form">
+  <input formControlName="name"/>
+</form>
+
+<button (click)="redirect('user')">Go to User</button>

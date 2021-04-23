@@ -1,3 +1,4 @@
+import { AuthService } from './core/services/auth.service';
 
 import { User } from './shared/models/User';
 
@@ -11,7 +12,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private router: Router, private activateRoute: ActivatedRoute) {
+  constructor(private router: Router,
+    private activateRoute: ActivatedRoute,
+    private authService: AuthService) {
 
   }
 
@@ -22,6 +25,10 @@ export class AppComponent implements OnInit {
   redirect(url: string) {
    this.router.navigate([url]);
 
+  }
+
+  login() {
+    this.authService.isLoggedIn = true;
   }
 
 }

@@ -1,11 +1,15 @@
+import { SaveFormGuard } from './core/guards/save-form.guard';
 import { LoopComponent } from './example-component/loop/loop.component';
 import { UserChildComponent } from './example-component/user-child/user-child.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserComponent } from './example-component/user/user.component';
 import { ProductComponent } from './example-component/product/product.component';
+import { AuthGuard } from './core/guards/auth.guard';
+import { ProductResolver } from './core/resolvers/product.resolver';
 
 const routes: Routes = [
+
 
   {
     path: 'user',
@@ -18,11 +22,16 @@ const routes: Routes = [
     ]
   }, {
     path: 'product',
-    component: ProductComponent
+    component: ProductComponent,
+    canActivate: [AuthGuard],
+    resolve: {
+      products: [ProductResolver]
+    }
   },
   {
     path: 'loop',
-    component: LoopComponent
+    component: LoopComponent,
+    canDeactivate: [SaveFormGuard]
   },
   {
     path: 'blog',
