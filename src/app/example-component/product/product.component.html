@@ -1,7 +1,18 @@
 <h3>This is the Product Page</h3>
 
 <div *ngFor="let data of products">
-  {{data.name}} - {{data.price}}
+  {{ data?.id }} - {{data?.name}} - {{data?.price}}
+  <span>
+    <button (click)="getProduct(data.id)">View</button>
+  </span>
 </div>
 
-<button [routerLink]="['/user']" routerLinkActive="router-link-active" >To User</button>
+<hr>
+  <div *ngIf="selectedProduct | async as product">
+    <h3>Product Details:</h3>
+    <div>Product Name: {{ product.name }}</div>
+    <div>Product Price: {{ product.price }}</div>
+  </div>
+<hr>
+
+<button [routerLink]="['/user']" routerLinkActive="router-link-active">To User</button>

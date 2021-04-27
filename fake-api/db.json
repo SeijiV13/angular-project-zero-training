@@ -1,0 +1,33 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "learn json-server",
+      "author": "Mrinmay Mukherjee"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "it's pretty awesome",
+      "postId": 1
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "PS5",
+      "price": 27000
+    },
+    {
+      "id": 2,
+      "name": "XBox",
+      "price": 18000
+    },
+    {
+      "id": 3,
+      "name": "Nintendo Switch",
+      "price": 27000
+    }
+  ]
+}
