@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/Product';
+import { ResourceEnums } from '../models/ResourceEnums';
 import { FakeRestApiService } from './fake-rest-api.service';
 
 @Injectable({
@@ -10,12 +11,10 @@ export class ProductRepositoryService {
   constructor(private fakeRestApiService: FakeRestApiService<Product>) { }
 
   getAllProducts() {
-    const resource = "products";
-    return this.fakeRestApiService.getAllRecords(resource);
+    return this.fakeRestApiService.getAllRecords(ResourceEnums.Products);
   }
 
   getProductById(id: number) {
-    const resource = "products";
-    return this.fakeRestApiService.getRecordById(resource, id);
+    return this.fakeRestApiService.getRecordById(ResourceEnums.Products, id);
   }
 }
