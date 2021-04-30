@@ -16,6 +16,8 @@ import { SortPipe } from './shared/pipes/sort.pipe';
 import { SortImpurePipe } from './shared/pipes/sort-impure.pipe';
 import { ProductComponent } from './example-component/product/product.component';
 import { ProductResolver } from './core/resolvers/product.resolver';
+import { HeaderExampleComponent } from './example-component/header-example/header-example.component';
+import { ProjectedChildComponent } from './example-component/projected-child/projected-child.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,9 @@ import { ProductResolver } from './core/resolvers/product.resolver';
     LoopComponent,
     //Pipes
     SortPipe,
-    SortImpurePipe
+    SortImpurePipe,
+    HeaderExampleComponent,
+    ProjectedChildComponent
   ],
   imports: [
     BrowserModule,

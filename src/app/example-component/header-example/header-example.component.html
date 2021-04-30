@@ -1,0 +1,22 @@
+<div>
+  <h3>Header Content Projection Example</h3>
+  <p>Menu 1</p>
+  <p>Menu 2</p>
+  <p>Menu 3</p>
+
+  <!-- DYNAMIC -->
+  <ng-content select=".input"></ng-content>
+  <ng-content select=".button"></ng-content>
+
+
+  <ng-content select=".child"></ng-content>
+  <ng-content select=".child2"></ng-content>
+  <ng-content select=".child3"></ng-content>
+
+  <!-- <app-projected-child #projectedChild [number]="0"></app-projected-child>
+  <app-projected-child #projectedChild [number]="1"></app-projected-child>
+  <app-projected-child #projectedChild [number]="2"></app-projected-child>
+  <app-projected-child #projectedChild [number]="3"></app-projected-child> -->
+  <button (click)="getNumber()">Get Number</button>
+  <button (click)="getContentChildren()">Get Content Children</button>
+</div>
