@@ -29,5 +29,39 @@
       "name": "Nintendo Switch",
       "price": 27000
     }
+  ],
+  "games": [
+    {
+      "id": 1,
+      "name": "Resident Evil",
+      "price": 2000,
+      "categoryId": 1
+    },
+    {
+      "id": 2,
+      "name": "SMASH Brothers",
+      "price": 2000,
+      "categoryId": 2
+    },
+    {
+      "id": 3,
+      "name": "Call of Duty",
+      "price": 2000,
+      "categoryId": 3
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Horror"
+    },
+    {
+      "id": 2,
+      "name": "Action-Adventure"
+    },
+    {
+      "id": 3,
+      "name": "First-Person-Shooter"
+    }
   ]
 }

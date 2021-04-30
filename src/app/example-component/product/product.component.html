@@ -1,4 +1,26 @@
 <h3>This is the Product Page</h3>
+<hr>
+<h3>Game List</h3>
+<div>
+  <label style="margin-right: 10px;" for="selection">Filter By Category:</label>
+  <select id="selection" (change)="selectedCategory($event.target.value)">
+    <option [value]="0">-Select All-</option>
+    <option *ngFor="let category of categories$ | async" [value]="category.id">{{ category?.name }}</option>
+  </select>
+</div>
+
+<table>
+    <tr>
+      <th *ngFor="let col of columns">{{ col?.label }}</th>
+    </tr>
+  <ng-container *ngFor="let game of gamesWithoutCategory$ | async">
+    <tr>
+      <td *ngFor="let col of columns" >{{ game[col?.field] }}</td>
+    </tr>
+  </ng-container>
+</table>
+
+
 
 <div *ngFor="let data of products">
   {{ data?.id }} - {{data?.name}} - {{data?.price}}
@@ -8,7 +30,7 @@
 </div>
 
 <hr>
-  <div *ngIf="selectedProduct | async as product">
+  <div *ngIf="selectedProduct$ | async as product">
     <h3>Product Details:</h3>
     <div>Product Name: {{ product.name }}</div>
     <div>Product Price: {{ product.price }}</div>
