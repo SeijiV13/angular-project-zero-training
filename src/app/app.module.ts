@@ -6,6 +6,7 @@ import { Child2Component } from './example-component/child2/child2.component';
 import { Child1Component } from './example-component/child1/child1.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -41,7 +42,8 @@ import { ProjectedChildComponent } from './example-component/projected-child/pro
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [ProductResolver],
   bootstrap: [AppComponent]
