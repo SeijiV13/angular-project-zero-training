@@ -8,20 +8,23 @@
     <option *ngFor="let category of categories$ | async" [value]="category.id">{{ category?.name }}</option>
   </select>
 </div>
-
-<table>
+<h1>NATIVE HTML ELEMENT TABLE</h1>
+ <table>
     <tr>
-      <th *ngFor="let col of columns">{{ col?.label }}</th>
+      <th *ngFor="let col of columns">{{ col?.header }}</th>
     </tr>
-  <ng-container *ngFor="let game of gamesWithoutCategory$ | async">
+  <ng-container *ngFor="let game of filteredGamesWithCategory$ | async">
     <tr>
       <td *ngFor="let col of columns" >{{ game[col?.field] }}</td>
     </tr>
   </ng-container>
 </table>
 
-
-
+<!-- PRIMENG DATATABLE -->
+<hr>
+<h2>FROM SHARED COMPONENT:</h2>
+<app-data-table [dataTableConfig]="dtConfig"></app-data-table>
+<hr>
 <div *ngFor="let data of products">
   {{ data?.id }} - {{data?.name}} - {{data?.price}}
   <span>
