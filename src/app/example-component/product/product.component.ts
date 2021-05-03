@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { combineLatest, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { combineLatest, Observable, Subscription } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { DataTableConfig } from 'src/app/shared/models/DataTableConfig';
 import { Game } from 'src/app/shared/models/Game';
 import { Product } from 'src/app/shared/models/Product';
 import { GameCategoryRepositoryService } from 'src/app/shared/services/game-category-repository.service';
@@ -16,10 +17,11 @@ import { ProductRepositoryService } from '../../shared/services/product-reposito
 })
 export class ProductComponent implements OnInit {
   columns = [
-    { field: 'id', label: '#' },
-    { field: 'name', label: 'Name' },
-    { field: 'price', label: 'Price' },
-    { field: 'categoryId', label: 'Category' },
+    { field: 'id', header: '#' },
+    { field: 'name', header: 'Name' },
+    { field: 'price', header: 'Price' },
+    { field: 'categoryName', header: 'Category Name' },
+    { field: 'categoryId', header: 'Category Id' },
   ];
   products: Product[];
   selectedProduct$: Observable<Product>;
@@ -57,6 +59,11 @@ export class ProductComponent implements OnInit {
   );
   // End of Streams Def:
 
+  dtConfig: DataTableConfig = {
+    columns: this.columns,
+    data: this.filteredGamesWithCategory$
+  }
+
   constructor(private activatedRoute: ActivatedRoute,
     private productRepositoryService: ProductRepositoryService,
     private gameRepositoryService: GameRepositoryService,
@@ -74,8 +81,7 @@ export class ProductComponent implements OnInit {
     this.selectedProduct$ = this.productRepositoryService.getProductById(id)
   }
 
-  selectedCategory(id: number) {
-    // console.log("Selected ID", +id);
+  selectedCategory(id: string) {
     this.gameCategoryRepositoryService.selectedCategoryId(+id);
   }
 

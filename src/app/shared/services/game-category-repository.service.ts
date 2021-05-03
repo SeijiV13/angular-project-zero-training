@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { GameCategory } from '../models/GameCategory';
 import { ResourceEnums } from '../models/ResourceEnums';
 import { FakeRestApiService } from './fake-rest-api.service';

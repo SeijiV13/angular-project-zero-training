@@ -18,6 +18,8 @@ import { ProductComponent } from './example-component/product/product.component'
 import { ProductResolver } from './core/resolvers/product.resolver';
 import { HeaderExampleComponent } from './example-component/header-example/header-example.component';
 import { ProjectedChildComponent } from './example-component/projected-child/projected-child.component';
+import { SharedModule } from './shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,10 +42,12 @@ import { ProjectedChildComponent } from './example-component/projected-child/pro
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   providers: [ProductResolver],
   bootstrap: [AppComponent]
